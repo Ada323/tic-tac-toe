@@ -76,7 +76,11 @@ function eachTurn(player, board) {
     printBoard();
     checkWin();
     if (win !== null) {
-      console.log(`Player ${win} is the winner!`);
+      if (win === 'X' || win === 'O') {
+        console.log(`Player ${win} is the winner!`);
+      } else {
+        console.log(`It's a tie!`);
+      }
     } else {
       if (player === 'X') {
         return eachTurn('O', board);
