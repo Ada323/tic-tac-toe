@@ -69,10 +69,16 @@ function checkWin() {
 }
 
 function eachTurn(player, board) {
+  console.log(`Player ${player}'s turn:`)
   printBoard();
   prompt.get(['position'], function (err, result) {
     console.log('  position: ' + result.position);
-    board[result.position] = player;
+    if (board[result.position] === ' ') {
+      board[result.position] = player;
+    } else {
+      console.log('Invalid input');
+      return eachTurn(player, board);
+    }
     printBoard();
     checkWin();
     if (win !== null) {
