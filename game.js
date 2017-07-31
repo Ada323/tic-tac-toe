@@ -68,20 +68,23 @@ function checkWin() {
   return win;
 }
 
-function eachTurn(board) {
+function eachTurn(player, board) {
   printBoard();
-  prompt.get(['player', 'position'], function (err, result) {
-    console.log('  player: ' + result.player);
+  prompt.get(['position'], function (err, result) {
     console.log('  position: ' + result.position);
-    board[result.position] = result.player;
+    board[result.position] = player;
     printBoard();
     checkWin();
     if (win !== null) {
       return win;
     } else {
-      eachTurn(board);
+      if (player === 'X') {
+        return eachTurn('O', board);
+      } else {
+        return eachTurn('X', board);
+      }
     }
   });
 }
 
-eachTurn(board);
+return eachTurn('X', board);
