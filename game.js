@@ -76,7 +76,7 @@ function eachTurn(player, board) {
     printBoard();
     checkWin();
     if (win !== null) {
-      return win;
+      console.log(`Player ${win} is the winner!`);
     } else {
       if (player === 'X') {
         return eachTurn('O', board);
